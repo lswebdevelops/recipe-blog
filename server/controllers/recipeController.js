@@ -14,7 +14,7 @@ exports.homepage = async (req, res) => {
     const limitNumber = 5;
     const categories = await Category.find({ }).limit(limitNumber);
     // latest
-    const latest = await Recipe.find( { }).sort({ _id: -1 }).limit(limitNumber);
+    const latest = await Recipe.find({ }).sort({ _id: -1 }).limit(limitNumber);
 
     const thai = await Recipe.find({ 'category': 'Thai'}).limit(limitNumber)
     const chinese = await Recipe.find({ 'category': 'Chinese'}).limit(limitNumber)
