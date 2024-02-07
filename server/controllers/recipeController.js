@@ -94,6 +94,26 @@ exports.exploreCategoriesById = async(req, res) => {
   }
 } 
 
+/**
+ * Post /
+ * search Recipe
+ */
+
+exports.searchRecipe = async(req, res) => {
+  try {
+    let searchTerm = req.body.searchTerm;
+//   filtering just the name and description 
+    let recipe = await Recipe.find({ $text: { $search: searchTerm, $diacriticSensitive: true }})
+    // res.json(recipe)
+
+
+
+     res.render('search', { title: 'Cooking Blog - Search' , recipe } );
+  } catch (error) {
+    res.satus(500).send({message: error.message || "Error Occured" });
+  }
+} 
+
 
 
 
