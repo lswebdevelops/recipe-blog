@@ -36,6 +36,25 @@ res.status(500).send( { message: error.message ||  'Error Occured' })
 
 /**
  * Get /
+ * recipe
+ */
+
+exports.exploreRecipe = async(req, res) => {
+  try {
+
+    let recipeId = req.params.id;
+
+    const recipe = await Recipe.findById(recipeId)  
+    
+    res.render('recipe', { title: 'Cooking Blog - Recipe' , recipe } );
+  } catch (error) {
+    res.satus(500).send({message: error.message || "Error Occured" });
+  }
+} 
+
+
+/**
+ * Get /
  * categories
  */
 
@@ -46,11 +65,51 @@ exports.exploreCategories = async(req, res) => {
     
 
 
-    res.render('categories', { title: 'Cooking Blog - Categoreis', categories } );
+    res.render('categories', { title: 'Cooking Blog - Categories', categories } );
   } catch (error) {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
 } 
+
+
+
+
+
+
+/**
+ * Get /
+ * category ids
+ */
+
+exports.exploreCategoriesById = async(req, res) => {
+  try {
+     let categoryId = req.params.id;
+
+     const limitNumber = 20;
+
+     const categoryById = await Recipe.find({ 'category': categoryId }).limit(limitNumber);
+     res.render('categories', { title: 'Cooking Blog - Categories', categoryById } );
+  } catch (error) {
+    res.satus(500).send({message: error.message || "Error Occured" });
+  }
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
