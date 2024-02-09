@@ -141,7 +141,7 @@ exports.exploreLatest = async(req, res) => {
 
 /**
  * Get / explore-Random
- * Explore Random as JSON
+ * Explore Random
  */
 
 exports.exploreRandom = async(req, res) => {
@@ -155,6 +155,18 @@ exports.exploreRandom = async(req, res) => {
   } catch (error) {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
+} 
+
+
+
+/**
+ * Get / submit Recipe
+ * Submit Recipe
+ */
+
+exports.submitRecipe = async(req, res) => { 
+
+     res.render('submit-recipe', { title: 'Cooking Blog - Submit Recipe' } ); 
 } 
 
 
