@@ -77,8 +77,8 @@ exports.exploreCategories = async(req, res) => {
 
 
 /**
- * Get /
- * category ids
+ * Get / recipe/:id
+ * Recipe
  */
 
 exports.exploreCategoriesById = async(req, res) => {
@@ -93,6 +93,7 @@ exports.exploreCategoriesById = async(req, res) => {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
 } 
+
 
 /**
  * Post /
@@ -118,6 +119,22 @@ exports.searchRecipe = async(req, res) => {
 
 
 
+
+/**
+ * Get / explore-latest
+ * Explore Latest
+ */
+
+exports.exploreLatest = async(req, res) => {
+  try {
+    
+    const limitNumber = 20;
+    const recipe = await Recipe.find({}).sort({ _id: -1 }).limit(limitNumber)
+     res.render('explore-latest', { title: 'Cooking Blog - Explore Latest', recipe } );
+  } catch (error) {
+    res.satus(500).send({message: error.message || "Error Occured" });
+  }
+} 
 
 
 
