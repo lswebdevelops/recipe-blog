@@ -7,17 +7,17 @@
   
   <div class="row justify-content-center">
   
-    <% if(infoSubmitObj != '') { %>
-      <div class="col-8 alert alert-success" role="alert">
-        <%= infoSubmitObj %>
-      </div>
-    <% } %>
   
-    <% if(infoErrorsObj != '') { %>
-      <div class="col-8 alert alert-danger" role="alert">
-        <%= infoErrorsObj[0].message %>
+      <div class="col-8 alert alert-success" role="alert">
+       
       </div>
-    <% } %>
+    
+  
+    
+      <div class="col-8 alert alert-danger" role="alert">
+        
+      </div>
+
   
     <div class="col-8">
   
@@ -64,8 +64,7 @@
               <option value="Mexican">Mexican</option>
               <option value="Indian">Indian</option>
             </select>
-          </div>
-  
+          </div>  
           <div class="col-12">
             <label for="image">Product Image</label>
             <input type="file" class="form-control" name="image" accept="image/*">
@@ -81,3 +80,4 @@
   
     </div>
   </div>
+ 
